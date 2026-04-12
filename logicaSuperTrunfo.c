@@ -7,54 +7,42 @@ int main() {
     // Definição das variáveis para armazenar as propriedades das cidades
 
     unsigned int populacao1, populacao2; 
-    int pontos_turisticos1, pontos_turisticos2;
+    int pontos_turisticos1, pontos_turisticos2, escolhaComparacao;
     float area1, area2, PIB1, PIB2, PPC1, PPC2, DENSIDADE1, DENSIDADE2, super_poder1, super_poder2; 
-    char estado1[20], estado2[80], codigo1[20], codigo2[80], nome1[80], nome2[80], cidadeVencedora[80];
+    char nome1[80], nome2[80], cidadeVencedora[80];
 
     //Primeiro serão feitas as perguntas sobre a primeira cidade    
 
-    printf ("Qual o estado da primeira carta (uma letra)?\n");
-    scanf ("%s", &estado1);   
-
-    printf ("Qual o código da primeira carta (ex: A01, B03)?\n");
-    scanf ("%s", &codigo1);    
-
-    printf ("Qual o nome da cidade da primeira carta?\n");
+    printf ("Qual o nome do país da primeira carta?\n");
     scanf ("%s", &nome1);   
     
-    printf ("Qual o número de habitantes da cidade da primeira carta?\n");
+    printf ("Qual o número de habitantes do país da primeira carta?\n");
     scanf ("%u", &populacao1);      
 
-    printf ("Qual a área da cidade da primeira carta (em km²)?\n");
+    printf ("Qual a área do país da primeira carta (em km²)?\n");
     scanf ("%f", &area1);
 
-    printf ("Qual o produto interno bruto da cidade da primeira carta?\n");
+    printf ("Qual o produto interno bruto do país da primeira carta?\n");
     scanf ("%f", &PIB1);    
 
-    printf ("Qual a quantidade de pontos turísticos da cidade da primeira carta?\n");
+    printf ("Qual a quantidade de pontos turísticos do país da primeira carta?\n");
     scanf("%d", &pontos_turisticos1);   
     
     //Agora começam as perguntas sobre a segunda cidade
-    
-    printf ("Qual o estado da segunda carta (uma letra)?\n");
-    scanf ("%s", &estado2);   
-
-    printf ("Qual o código da segunda carta (ex: A01, B03)?\n");
-    scanf ("%s", &codigo2);    
-
-    printf ("Qual o nome da cidade da segunda carta?\n");
+       
+    printf ("Qual o nome do país da segunda carta?\n");
     scanf ("%s", &nome2);   
     
-    printf ("Qual o número de habitantes da cidade da segunda carta?\n");
+    printf ("Qual o número de habitantes do país da segunda carta?\n");
     scanf ("%u", &populacao2);    
 
-    printf ("Qual a área da cidade da segunda carta (em km²)?\n");
+    printf ("Qual a área do país da segunda carta (em km²)?\n");
     scanf ("%f", &area2);
 
-    printf ("Qual o produto interno bruto da cidade da segunda carta?\n");
+    printf ("Qual o produto interno bruto do país da segunda carta?\n");
     scanf ("%f", &PIB2);    
 
-    printf ("Qual a quantidade de pontos turísticos da cidade da segunda carta?\n");
+    printf ("Qual a quantidade de pontos turísticos do país da segunda carta?\n");
     scanf("%d", &pontos_turisticos2);   
 
     // Área para cálculos dos atributos PPC e Densidade
@@ -65,18 +53,116 @@ int main() {
     DENSIDADE2 = (float) populacao2 / area2;
 
     // Comparação de Cartas:
-    // Utilisando apenas um dos atributos 
+
+    printf ("Qual atributo deseja comparar?\n");
+    printf ("1. População\n");  
+    printf ("2. Área\n");
+    printf ("3. Produto Interno Bruto\n");  
+    printf ("4. Pontos Turísticos\n");
+    printf ("5. Densidade\n");
+    scanf ("%d", &escolhaComparacao);
 
 
-    if (populacao1 > populacao2) {
-        printf ("Carta 1 %s: %u\n", nome1, populacao1);
-        printf ("Carta 2 %s: %u\n", nome2, populacao2);
-        printf ("Carta 1 tem maior população!\n");
-    } else {
-        printf ("Carta 1 %s: %u\n", nome1, populacao1);
-        printf ("Carta 2 %s: %u\n", nome2, populacao2);
-        printf ("Carta 2 tem maior população!\n");
-    }
+	switch (escolhaComparacao) {
+		case 1:;
+			if (populacao1 > populacao2) {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: População\n");
+	    			printf ("Carta 1: %u | Carta 2: %u\n", populacao1, populacao2);
+        			printf ("Carta 1 tem maior população!\n");
 
-    return 0;
+    			} else if (populacao1 < populacao2) {
+       				printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: População\n");
+	    			printf ("Carta 1: %u | Carta 2: %u\n", populacao1, populacao2);
+        			printf ("Carta 2 tem maior população!\n");
+    			} else {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: População\n");
+	   			    printf ("Carta 1: %u | Carta 2: %u\n", populacao1, populacao2);
+        			printf ("As cartas têm a mesma população!\n");
+    			}
+			break;
+        case 2:
+			if (area1 > area2) {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Área\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", area1, area2);
+        			printf ("Carta 1 tem maior área!\n");
+
+    			} else if (area1 < area2) {
+       				printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Área\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", area1, area2);
+        			printf ("Carta 2 tem maior área!\n");
+    			} else {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Área\n");
+	   			    printf ("Carta 1: %f | Carta 2: %f\n", area1, area2);
+        			printf ("As cartas têm a mesma área!\n");
+    			}
+			break;
+        case 3:
+			if (PIB1 > PIB2) {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Produto Interno Bruto\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", PIB1, PIB2);
+        			printf ("Carta 1 tem maior PIB!\n");
+
+    			} else if (PIB1 < PIB2) {
+       				printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Produto Interno Bruto\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", PIB1, PIB2);
+        			printf ("Carta 2 tem maior PIB!\n");
+    			} else {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Produto Interno Bruto\n");
+	   			    printf ("Carta 1: %f | Carta 2: %f\n", PIB1, PIB2);
+        			printf ("As cartas têm o mesmo PIB!\n");
+    			}
+			break;  
+        case 4:
+			if (pontos_turisticos1 > pontos_turisticos2) {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Pontos Turísticos\n");
+	    			printf ("Carta 1: %d | Carta 2: %d\n", pontos_turisticos1, pontos_turisticos2);
+        			printf ("Carta 1 tem mais pontos turísticos!\n");
+
+    			} else if (pontos_turisticos1 < pontos_turisticos2) {
+       				printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Pontos Turísticos\n");
+	    			printf ("Carta 1: %d | Carta 2: %d\n", pontos_turisticos1, pontos_turisticos2);
+        			printf ("Carta 2 tem mais pontos turísticos!\n");
+    			} else {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Pontos Turísticos\n");
+	   			    printf ("Carta 1: %d | Carta 2: %d\n", pontos_turisticos1, pontos_turisticos2);
+        			printf ("As cartas têm os mesmos pontos turísticos!\n");
+    			}
+			break;                      
+        case 5:
+			if ((1 / DENSIDADE1) > (1 / DENSIDADE2)) {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Densidade Demográfica\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", DENSIDADE1, DENSIDADE2);
+        			printf ("Carta 1 tem maior densidade demográfica!\n");
+
+    			} else if ((1 / DENSIDADE1) < (1 / DENSIDADE2)) {
+       				printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Densidade Demográfica\n");
+	    			printf ("Carta 1: %f | Carta 2: %f\n", DENSIDADE1, DENSIDADE2);
+        			printf ("Carta 2 tem maior densidade demográfica!\n");
+    			} else {
+        			printf ("País da Carta 1: %s | País da Carta 2: %s\n", nome1, nome2);
+        			printf ("Atributo: Densidade Demográfica\n");
+	   			    printf ("Carta 1: %f | Carta 2: %f\n", DENSIDADE1, DENSIDADE2);
+        			printf ("As cartas têm a mesma densidade demográfica!\n");
+    			}
+			break;
+		default:
+			printf("Opção inválida\n");
+			break;
+	}
+
+	return 0;
 }
